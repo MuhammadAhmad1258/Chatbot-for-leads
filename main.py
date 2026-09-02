@@ -81,6 +81,17 @@ async def chat(client_id: str, request: ChatRequest):
     return ChatResponse(reply=reply_text, session_id=session_id)
 
 
+@app.get("/")
+def root():
+    return {
+        "status": "online",
+        "message": "Chatbot ADK Backend is running!",
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
